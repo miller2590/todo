@@ -5,7 +5,10 @@ name = "pypi"
 
 [packages]
 flask = "*"
+wtforms = "*"
 flask-wtf = "*"
+sqlalchemy = "*"
+flask-sqlalchemy = "*"
 
 [dev-packages]
 
