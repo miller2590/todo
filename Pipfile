@@ -9,6 +9,7 @@ wtforms = "*"
 flask-wtf = "*"
 sqlalchemy = "*"
 flask-sqlalchemy = "*"
+gunicorn = "*"
 
 [dev-packages]
 
