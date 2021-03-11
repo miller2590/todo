@@ -1,18 +1,15 @@
+import environ as environ
 from flask import Flask, render_template, redirect, url_for
 from models.forms import AddTask, TaskOptions
-from flask_sqlalchemy import SQLAlchemy
+from os import environ
+
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'MY_LITTLE_SECRET'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///myDB.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('DATABASE_URL') or 'sqlite:///myDB.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
-db = SQLAlchemy(app)
-
-
-class Task(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(50), index=True, unique=True)
+from models.tables import Task, db
 
 
 @app.route('/', methods=["GET", "POST"])
